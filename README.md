@@ -20,7 +20,7 @@ Este proyecto se centra en la implementación de un sistema que interpreta y eva
 4. El usuario podrá seguir ingresando expresiones o finalizar el programa.
 
 ## 🎥 Video demostrativo del funcionamiento
-Enlace al video explicativo: 
+Enlace al video explicativo: https://www.youtube.com/watch?v=a2J1WSiFHyg&ab_channel=LeonelMercorelli
 
 ## 📈 Reflexiones finales del equipo
 El proyecto permitió aplicar conceptos teóricos en una situación práctica concreta, afianzando el uso de estructuras de datos complejas y fortaleciendo habilidades de programación en Python. Se trabajó de forma colaborativa, resolviendo dificultades técnicas y lógicas, y se alcanzó una comprensión más profunda del rol que cumplen los árboles de expresión en contextos reales como compiladores o calculadoras. Además, se identificaron mejoras futuras como el agregado de validaciones sintácticas, soporte para variables simbólicas y visualización gráfica del árbol construido.

@@ -1,6 +1,6 @@
 import operator
 
-# 1) ------------------ CREAMOS LA CLASE PARA LOS NODOS------------------
+# 1) ------------------ DEFINIMOS LA CLASE PARA LOS NODOS------------------
 class Nodo:
     def __init__(self, valor):
         self.valor = valor
@@ -34,9 +34,11 @@ def es_valida(infija):
 
 
 # 4) ------------------ ALGORITMO SHUNTING YARD - INFIJA A POSTFIJA ------------------
+
+#Ejemplo snecillo para la explicacion del algoritmo:
 def convertir_a_postfija(infija):
-    postfija = []
-    pila = []
+    postfija = [] 
+    pila = [] 
     numero = ''
     for carac in infija: #Recorremos la expresion, caracter por caracter
         if carac.isdigit() or carac == ',': #Preguntamos si el caracter es un numero o una coma
@@ -47,9 +49,9 @@ def convertir_a_postfija(infija):
                 numero = ''
             if carac in operadores: #Si elc aracter no es un numero, preguntamos si es un operador
                 while (
-                    pila and
-                    pila[-1] in operadores and
-                    operadores[carac][0] <= operadores[pila[-1]][0]
+                        pila and
+                        pila[-1] in operadores and
+                        operadores[carac][0] <= operadores[pila[-1]][0]
                 ):
                     postfija.append(pila.pop())
                 pila.append(carac)
@@ -71,14 +73,14 @@ def convertir_a_postfija(infija):
 
 # 5) ------------------ CONSTRUIMOS EL ARBOL USANDO LA EXPRESION POSTFIJA OBTENIDA ------------------
 def construir_arbol(postfija):
-    pila = []
-    for carac in postfija:
+    pila = [] 
+    for carac in postfija: 
         nodo = Nodo(carac) #Creamos el nodo
         if carac in operadores: 
             nodo.derecho = pila.pop() 
             nodo.izquierdo = pila.pop() 
         pila.append(nodo)
-    return pila[0]  # devolvemos el unico nodo que queda: la raiz
+    return pila[0]  # devolvemos el unico nodo que queda; la raiz
 
 
 # 6) ------------------ RESOLVEMOS EL ARBOL RECURSIVAMENTE ------------------
@@ -86,7 +88,7 @@ def resolver_nodo(nodo):
     if nodo.valor not in operadores:
         return float(nodo.valor.replace(',', '.'))  # Cambiamos coma por punto
     valor_izq = resolver_nodo(nodo.izquierdo)
-    valor_der = resolver_nodo(nodo.derecho)
+    valor_der = resolver_nodo(nodo.derecho) 
     return operadores[nodo.valor][1](valor_izq, valor_der) #Retornamos el resultado de la operacion que indica el padre, entre sus dos hijos
 
 
@@ -96,10 +98,10 @@ while True:
         infija = input("📥 Ingresá la expresión matemática (infija): ")
         infija = infija.replace(' ', '')
         if es_valida(infija): 
-            break  
+            break 
 
     postfija = convertir_a_postfija(infija)
-    print(f"\nExpresión en postfijo: {' '.join(postfija)}") 
+    print(f"\nExpresión en postfijo: {' '.join(postfija) }")
 
     continuar = input("\n¿Deseás continuar o salir del programa? (c/s): ").lower()
     if continuar == 'c':
